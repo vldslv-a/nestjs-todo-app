@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int     @id @default(autoincrement())
+  email           String  @unique
+  firstName       String
+  lastName        String
+  password        String
+  logo            String?
+  isEmailVerified Boolean @default(false)
+
+  oauthProfiles      OAuthProfile[]
+  verificationTokens VerificationToken[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OAuthProfile {
+  id           Int     @id @default(autoincrement())
+  provider     String
+  profileId    String
+  email        String?
+  firstName    String?
+  lastName     String?
+  profileImage String?
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, profileId])
+  @@index([userId])
+  @@index([email])
+}
+
+model VerificationToken {
+  id        Int                   @id @default(autoincrement())
+  token     String                @unique
+  type      VerificationTokenType
+  expiresAt DateTime
+  isUsed    Boolean               @default(false)
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([token])
+  @@index([type])
+}
+
+enum VerificationTokenType {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+}

@@ -1,0 +1,5 @@
+npx tsc
+npm run lint:js
+npm run knip
+npm run test
+# npm run test:e2e
