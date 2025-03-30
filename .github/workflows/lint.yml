@@ -55,10 +55,10 @@ jobs:
         run: npm run test
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         if: success() || failure()
         with:
-          name: Test report
+          name: JEST Tests
           path: reports/*-test.xml
           reporter: jest-junit
           token: ${{ steps.generate-token.outputs.token }}

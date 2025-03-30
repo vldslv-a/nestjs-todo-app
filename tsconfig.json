@@ -27,6 +27,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "types": ["node", "jest", "Multer"],
+    "types": ["node", "jest", "multer"],
   },
 }
