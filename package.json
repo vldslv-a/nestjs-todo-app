@@ -73,7 +73,7 @@
     "eslint-plugin-sonarjs": "^3.0.4",
     "husky": "^9.1.7",
     "install": "^0.13.0",
-    "jest": "^30.0.4",
+    "jest": "^30.0.5",
     "jest-junit": "^16.0.0",
     "knip": "^5.62.0",
     "npm": "^11.4.2",
