@@ -24,7 +24,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@nestjs-modules/mailer": "^2.3.0",
+    "@nestjs-modules/mailer": "^2.3.4",
     "@nestjs/common": "^11.1.17",
     "@nestjs/config": "^4.0.3",
     "@nestjs/core": "^11.1.17",
