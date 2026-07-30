@@ -76,7 +76,7 @@
     "jest": "^30.4.2",
     "jest-junit": "^17.0.0",
     "knip": "^6.29.0",
-    "npm": "^12.0.1",
+    "npm": "^12.0.2",
     "prettier": "^3.9.6",
     "prisma": "^7.9.1",
     "source-map-support": "^0.5.21",
